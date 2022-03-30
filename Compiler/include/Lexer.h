@@ -22,7 +22,7 @@ class Lexer : public yyFlexLexer{
 
   public:
     int yylex() override;
-    void GetLexemes(std::vector<std::pair<int, std::string>> *lexemes);
+    void GetLexemes(std::vector<std::pair<int, std::string>> *lexemes, const std::string& path);
 };
 
 #endif

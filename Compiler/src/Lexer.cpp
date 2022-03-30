@@ -1,5 +1,6 @@
 #include "Lexer.h"
 #include <iostream>
+#include <fstream>
 
 int yyFlexLexer::yywrap() {
     return 1;
@@ -29,7 +30,9 @@ int Lexer::ProcessError(){
     return 1;
 }
 
-void Lexer::GetLexemes(std::vector<std::pair<int, std::string>> *lexemes){
+void Lexer::GetLexemes(std::vector<std::pair<int, std::string>> *lexemes, const std::string& path){
+    std::ifstream in_file(path);
+    switch_streams(&in_file, 0);
     while (yylex() != 0){
         std::cout << lexeme_type_ << " <" << value_ << ">" << std::endl;
         (*lexemes).push_back({lexeme_type_, value_});
