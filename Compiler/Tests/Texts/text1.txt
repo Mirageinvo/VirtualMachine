@@ -1,0 +1,6 @@
+
+    int a;
+    double b = 9.7;
+    a++;
+    a = a + b;
+
