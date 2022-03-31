@@ -4,20 +4,24 @@
 #if !defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
 #endif
+
 #include <vector>
 
-const int OPERATOR = 0;
-const int NUMBER = 1;
-const int NAME = 2;
-const int ERROR = 3;
+enum LexemesTypes: const int{
+    OPERATOR,
+    NUMBER,
+    FLOAT,
+    ID,
+    STRING,
+    LEGAL_SYM,
+    ERROR
+};
 
 class Lexer : public yyFlexLexer{
     int lexeme_type_;
     std::string value_;
 
-    int ProcessNumber();
-    int ProcessOperator();
-    int ProcessName();
+    int Process(int type);
     int ProcessError();
 
   public:
@@ -25,4 +29,4 @@ class Lexer : public yyFlexLexer{
     void GetLexemes(std::vector<std::pair<int, std::string>> *lexemes, const std::string& path);
 };
 
-#endif
+#endif //COMPILER_LEXER_H
