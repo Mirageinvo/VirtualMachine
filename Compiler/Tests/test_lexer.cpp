@@ -1,9 +1,9 @@
 #include "Lexer.h"
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
 
-const std::string texts_path = "../Compiler/Tests/Texts/";
+const std::string texts_path = "../../../Compiler/Tests/Texts/";
 
-TEST(GetLexemes, ID){
+TEST(GetLexemes, ID) {
     Lexer lexer;
     std::vector<std::pair<int, std::string>> lexemes;
     lexer.GetLexemes(&lexemes, texts_path + "id_text.txt");
@@ -19,7 +19,7 @@ TEST(GetLexemes, ID){
     ASSERT_EQ(lexemes, true_lexemes);
 }
 
-TEST(GetLexemes, FLOAT){
+TEST(GetLexemes, FLOAT) {
     Lexer lexer;
     std::vector<std::pair<int, std::string>> lexemes;
     lexer.GetLexemes(&lexemes, texts_path + "float_text.txt");
@@ -36,7 +36,7 @@ TEST(GetLexemes, FLOAT){
     ASSERT_EQ(lexemes, true_lexemes);
 }
 
-TEST(GetLexemes, STRING){
+TEST(GetLexemes, STRING) {
     Lexer lexer;
     std::vector<std::pair<int, std::string>> lexemes;
     lexer.GetLexemes(&lexemes, texts_path + "strings.txt");
@@ -55,8 +55,8 @@ TEST(GetLexemes, STRING){
     ASSERT_NE(lexemes[3], true_lexemes[3]);
 }
 
-TEST(GetLexemes, text1){
-    Lexer *lexer = new Lexer;
+TEST(GetLexemes, text1) {
+    Lexer* lexer = new Lexer;
     std::vector<std::pair<int, std::string>> lexemes;
     lexer->GetLexemes(&lexemes, texts_path + "text1.txt");
     delete lexer;
@@ -83,12 +83,12 @@ TEST(GetLexemes, text1){
 
     ASSERT_EQ(lexemes, true_lexemes);
 
-    lexemes.push_back({10, "l"});
+    lexemes.push_back({ 10, "l" });
     ASSERT_NE(lexemes, true_lexemes);
 }
 
-TEST(GetLexemes, text2){
-    Lexer *lexer = new Lexer;
+TEST(GetLexemes, text2) {
+    Lexer* lexer = new Lexer;
     std::vector<std::pair<int, std::string>> lexemes;
     lexer->GetLexemes(&lexemes, texts_path + "text2.txt");
     delete lexer;
@@ -118,7 +118,7 @@ TEST(GetLexemes, text2){
 
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
