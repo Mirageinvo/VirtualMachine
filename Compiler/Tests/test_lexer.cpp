@@ -1,7 +1,7 @@
 #include "Lexer.h"
 #include "gtest/gtest.h"
 
-const std::string texts_path = "../../../Compiler/Tests/Texts/";
+const std::string texts_path = "../../../Compiler/tests/texts/";
 
 TEST(GetLexemes, ID) {
     Lexer lexer;
@@ -113,9 +113,7 @@ TEST(GetLexemes, text2) {
         {LEGAL_SYM, ";"},
         {LEGAL_SYM, "}"},
     };
-
     ASSERT_EQ(lexemes, true_lexemes);
-
 }
 
 int main(int argc, char* argv[]) {

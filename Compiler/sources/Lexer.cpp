@@ -20,7 +20,7 @@ int Lexer::ProcessError(){
 
 void Lexer::GetLexemes(std::vector<std::pair<int, std::string>> *lexemes, const std::string& path){
     std::ifstream in_file(path);
-    switch_streams(&in_file, 0);
+    switch_streams(&in_file, nullptr);
     while (yylex() != 0){
         (*lexemes).push_back({lexeme_type_, value_});
     }

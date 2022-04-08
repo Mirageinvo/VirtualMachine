@@ -6,8 +6,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-set(SRCS_PATH "../src/")
-set(INCL_PATH "../include/")
+set(SRCS_PATH "../sources/")
+set(INCL_PATH "../includes/")
 
 FLEX_TARGET(Scanner ${SRCS_PATH}/Lexer.l ${CMAKE_BINARY_DIR}/flex_out.cpp)
 add_executable(lexer_tests
