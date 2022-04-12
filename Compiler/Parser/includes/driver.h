@@ -1,6 +1,7 @@
 #ifndef COMPILER_PARSER_INCLUDES_DRIVER
 #define COMPILER_PARSER_INCLUDES_DRIVER
 
+#include <numeric>
 #include "../../../build/grammar.tab.hh"
 #include <FlexLexer.h>
 
@@ -28,8 +29,23 @@ public:
         return tt;
     }
 
+    void insert(std::vector<std::pair<std::vector<int>, std::vector<int>>> v) {
+        vvv_.assign(v.rbegin(), v.rend());
+    }
+
+  void printout() const {
+    for (auto vv : vvv_) {
+      int sumleft = std::accumulate(vv.first.begin(), vv.first.end(), 0);
+      int sumright = std::accumulate(vv.second.begin(), vv.second.end(), 0);
+      int res = (sumleft == sumright);
+      std::cout << "Checking: " << sumleft << " vs " << sumright
+                << "; Result: " << res << std::endl;
+    }
+  }
+
 private:
     FlexLexer* plex_;
+    std::vector<std::pair<std::vector<int>, std::vector<int>>> vvv_;
 };
 
 } //namespace yy
